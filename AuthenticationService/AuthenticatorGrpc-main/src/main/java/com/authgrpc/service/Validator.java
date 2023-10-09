@@ -12,7 +12,7 @@ public class Validator {
 	private final String secretKeyString = "your-secret-key-dygwufwyfewufywfewefwyeffwef0erfjl";
     private final byte[] decodedKey = secretKeyString.getBytes();
     private final Key SECRET_KEY = Keys.hmacShaKeyFor(decodedKey);
-
+  //Token Validation method
     public boolean validateToken(String token) {
         try {
             Jws<Claims> claimsJws = Jwts.parserBuilder()
