@@ -1,0 +1,14 @@
+# GRPC Services Host : Port
+grpc:
+  services:
+    get-data:
+      host: localhost  # Change this to the actual host of GetDataService 192.168.108.1
+      port: 8444       # Change this to the actual port of GetDataService
+
+    calculation-engine:
+      host: localhost  # Change this to the actual host of CalculationEngineService
+      port: 4450       # Change this to the actual port of CalculationEngineService
+
+# Server Port
+server:
+  port: 9090

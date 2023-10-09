@@ -1,0 +1,21 @@
+{
+  "templateID": "12345678",
+  "templateName": "TVAttributesTemplate",
+  "featureList": [
+    {
+      "seqID": 1,
+      "featureName": "F1",
+      "attributeName": "Total_no_of_loans"
+    },
+    {
+      "seqID": 2,
+      "featureName": "F2",
+      "attributeName": "Total_no_of_open_loans"
+    },
+    {
+      "seqID": 3,
+      "featureName": "F3",
+      "attributeName": "Total_no_of_closed_loans"
+    }
+  ]
+}

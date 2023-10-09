@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/timestamp.proto";
+
+option java_package = "com.bootcamp.grpc.orchestrator.proto";
+option java_multiple_files = true;
+
+
+message Pan {
+  string panNumber = 1;
+}
+
+message Pii {
+  Pan pan = 1;
+}
+
+message Product {
+  string product = 1;
+  string isRequested = 2;
+  string adviserTemplateId = 3;
+}
+
+message OrchestratorRequest {
+  Pii pii = 1;
+  string monitoringDate = 2;
+  repeated Product products = 3;
+}
+
+message RequestHeader {
+  string transactionId = 1;
+  string memberCode = 2;
+  string productCode = 3;
+  string monitoringDate = 4;
+}
+
+message ResponseDetail {
+  string responseCode = 1;
+  string responseDesc = 2;
+}
+
+message ErrorDetail {
+  string errorCode = 1;
+  string errorDesc = 2;
+}
+
+message ControlData {
+  repeated ResponseDetail responseDetails = 1;
+  repeated ErrorDetail errorDetails = 2;
+  string status = 3;
+  string isHit = 4;
+}
+
+message ProductTrait {
+  string featureName = 1;
+  string featureValue = 2;
+}
+
+message ProductTraitsMap {
+  map<string,string> productTraitsMap = 1;
+}
+
+message ProductDetails {
+  repeated ProductTrait productTraits = 1;
+  string subjectId = 2;
+  ControlData controlData = 3;
+  string productId = 4;
+}
+
+message ProductResponse {
+  repeated ProductDetails productDetails = 1;
+  string product = 2;
+}
+
+message OrchestratorResponse {
+  repeated ProductResponse productResponses = 1;
+}
+
+service OrchestratorService {
+  rpc calculateParameters(OrchestratorRequest) returns (OrchestratorResponse);
+}

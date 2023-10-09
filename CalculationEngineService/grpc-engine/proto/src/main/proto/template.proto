@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package com.templateService;
+
+option java_package = "com.templateService";
+option java_multiple_files = true;
+
+message RequestHeader {
+  string transactionId = 1;
+  string memberCode = 2;
+  string productCode = 3;
+  string monitoringDate = 4;
+}
+
+message Template {
+  string templateID = 1;
+}
+
+message TemplateRequest {
+  RequestHeader requestHeader = 1;
+  repeated Template templates = 2;
+}
+
+message Feature {
+  int32 seqID = 1;
+  string featureName = 2;
+  string attributeName = 3;
+}
+message ResponseHeader {
+  string responseCode = 1;
+  string responseDesc = 2;
+}
+
+message ErrorHeader {
+  string errorCode = 1;
+  string errorDesc = 2;
+}
+
+message TemplateResponse {
+  string templateID = 1;
+  string templateName = 2;
+  repeated Feature featureList = 3;
+}
+
+message TemplateResponseList {
+  ResponseHeader responseHeader = 1;
+  ErrorHeader errorHeader = 2;
+  repeated TemplateResponse templateResponses = 3;
+}
+
+service TemplateService {
+  rpc fetchTemplate(TemplateRequest) returns (TemplateResponseList) {}
+}
+
+
+
+
+
+
+

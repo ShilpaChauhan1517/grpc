@@ -1,0 +1,65 @@
+syntax = "proto3";
+package com.grpcAssignment;
+
+option java_package = "com.grpcAssignment";
+option java_multiple_files = true;
+
+
+message Pan {
+  string panNumber = 1;
+}
+
+message Pii {
+  Pan pan = 1;
+}
+
+message Previous_Installment{
+  string payment_date = 1;
+  int32 amount_paid = 2;
+}
+
+message Loan {
+  string LoanType = 1;
+  int32 noOfInstallments = 2;
+  int32 futureInstallment = 3;
+  string sanctionedAmount = 4;
+  string loanStatus = 5;
+  string TransactionId = 6;
+  int32 LoanID = 7;
+  string subjectId = 8;
+  repeated  Previous_Installment previousInstallments = 9;
+}
+
+message RequestHeader {
+  string transactionId = 1;
+  string memberCode = 2;
+  string productCode = 3;
+  string monitoringDate = 4;
+}
+
+message Errors{
+  string errorCode = 1;
+  string errorDesc = 2;
+}
+
+message ResponseHeader{
+  string responseCode = 1;
+  string responseDesc = 2;
+}
+
+message GetDataRequest {
+  RequestHeader requestHeader = 1;
+  Pii pii = 2;
+}
+
+message GetDataResponse {
+  string aadhaarId = 1;
+  string name = 2;
+  repeated Loan loans = 3;
+  ResponseHeader responseHeader = 4;
+  Errors errors = 5;
+}
+
+service GetDataService{
+  rpc getPanData(GetDataRequest)returns(GetDataResponse);
+}

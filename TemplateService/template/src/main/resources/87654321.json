@@ -1,0 +1,21 @@
+{
+  "templateID": "87654321",
+  "templateName": "TVIndicatorsTemplate",
+  "featureList": [
+    {
+      "seqID": 4,
+      "featureName": "F4",
+      "attributeName": "Total_outstanding_amount_of_all_trades"
+    },
+    {
+      "seqID": 5,
+      "featureName": "F5",
+      "attributeName": "Total_no_of_trades_opened_since_X_months"
+    },
+    {
+      "seqID": 6,
+      "featureName": "F6",
+      "attributeName": "Average_monthly_installments_since_X_months"
+    }
+  ]
+}

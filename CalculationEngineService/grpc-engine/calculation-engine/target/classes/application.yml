@@ -1,0 +1,12 @@
+# GRPC Services Host : Port
+grpc:
+  server:
+    port: 4450
+
+  services:
+    template:
+        host: localhost  # Change this to the actual host of TemplateService
+        port: 9010       # Change this to the actual port of TemplateService
+
+server:
+  port: 9005
